@@ -1,1 +1,28 @@
+body {
+    font-family: 'BenchNine', sans-serif;
+}
 
+h1 {
+    font-size: 50px;
+    border: solid 1px black;
+    text-align: center;
+}
+
+#data-input {
+    font-size: 20px;
+    border: solid 1px black;
+    text-align: center;
+}
+
+
+.button {
+    text-align: right;
+    background-color: #bfbfbf;
+}
+
+footer {
+    text-align: center;
+}
+/* #ff8080 pink
+#ffe680 yellow
+#99e6e6 blue */

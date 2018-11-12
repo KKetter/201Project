@@ -3,28 +3,28 @@
 <head>
   <title>Macro Tracker</title>
   <meta charset="utf-8" />
-  <!-- <link rel="stylesheet" href="./style/reset.css">
-  <link rel="stylesheet" href="./style/salesstyle.css"> -->
-
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Arimo%7CBenchNine%7CEncode+Sans+Condensed%7CKhand%7CNunito%7COpen+Sans+Condensed:300%7CRopa+Sans" rel="stylesheet">
 </head>
 <body>
   <header>
       <meta charset="utf-8" />
   </header>
   <main id="main-content">
-      <h1>Track Your Macs</h1>
+    <h1>Track Your Macs</h1>
     <form id="form-data" class="form">
-    <div>
+    <div id="data-input">
       <label id="carbs" class="form">Carbs: </label><input id="carbs" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
       <label id="Prot" class="form">Proteins: </label><input id="Prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
       <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal" required> <br>
-      <button type="submit" class="submit">Track It!</button>
-    </div>
-    <div id="buttons">
-      <div id="reset"></div>
+      <button type="submit" class="button">Track It!</button>
     </div>
     <div id="chart-div">
       <canvas id="myChart" width="400" height="500"></canvas>
+  </div>
+  <div class="button">
+    <button type="submit" class="button">Reset</button>
   </div>
   </form>
   </main>
