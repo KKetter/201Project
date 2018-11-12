@@ -25,16 +25,6 @@ function Macros(newCarbs, newProt, newFats) {
 }
 
 function renderChart() {
-  // var votedArray = []; //defined array to tallys votes before refresh
-  // var votesArray = []; //defined array for votes each render results
-  // if (localStorage.getItem('votes')) {
-  //   var votesData = localStorage.getItem('votes');
-  //   votedArray = JSON.parse(votesData); //pulls from local storage and pushes into defined array
-  //   for ( var h = 0; h < products.length; h++) {
-  //     votedArray[h] = parseInt(votedArray[h]);
-  //     votes[h] += votedArray[h];
-  //   }
-  // }
   var userInputResults = [userInput0[0], userInput1[0], userInput2[0]];
   var resultsPrior = [];
   console.log('results Array', resultsPrior);
@@ -49,7 +39,6 @@ function renderChart() {
       userInputResults[h] += postResults[h];
     }
   }
-
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
     data: {
