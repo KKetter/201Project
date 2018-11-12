@@ -5,56 +5,51 @@ var category = ['carbs', 'prot', 'fats'];
 var userInput0 = [];
 var userInput1 = [];
 var userInput2 = [];
-console.log(userInput0);
-console.log(userInput1);
-console.log(userInput2);
 var ctx = document.getElementById('myChart').getContext('2d'); //hook for chart
 
 function Macros(newCarbs, newProt, newFats) {
-  
   this.newCarbs = newCarbs;
   this.newProt = newProt;
   this.newFats = newFats;
+  console.log('newCarb', newCarbs);
+  console.log('newProt', newProt);
+  console.log('newFats', newFats);
   userInput0.push(this.newCarbs);
   userInput1.push(this.newProt);
   userInput2.push(this.newFats);
+  console.log('user input 0', userInput0);
+  console.log('user input 1', userInput1);
+  console.log('user input 2', userInput2);
   renderChart();
 }
-
-Macros.prototype.storeMacros = function () {
-  for (var i = 0; i < category.length; i++) {
-    var singleInput = this.newCarbs + this.newProt + this.newFats;
-    this.userInput.push(singleInput);
-  }
-}
 function renderChart() {
-  // var votedArray = []; //defined array to tallys votes before refresh
-  // var votesArray = []; //defined array for votes each render results
-  // if (localStorage.getItem('votes')) {
-  //   var votesData = localStorage.getItem('votes');
-  //   votedArray = JSON.parse(votesData); //pulls from local storage and pushes into defined array
-  //   for ( var h = 0; h < products.length; h++) {
-  //     votedArray[h] = parseInt(votedArray[h]);
-  //     votes[h] += votedArray[h];
-  //   }
-  // }
-  var userInput = [userInput0, userInput1, userInput2];
-  // console.log(userInputResults);
-  // for (var j = 0; j < userInput.length; j++) {
-  //   userInputResults.push(userInput[j].userInputResults);
-  // }
+  var userInputResults = [userInput0[0], userInput1[0], userInput2[0]];
+  var resultsPrior = [];
+  console.log('results Array', resultsPrior);
+  var postResults = [];
+  console.log('stored results', postResults);
+  console.log(userInputResults);
+  if (localStorage.getItem('userInputResults')) {
+    var storedData = localStorage.getItem('userInputResults');
+    postResults = JSON.parse(storedData);
+    for (var h = 0; h < category.length; h++) {
+      postResults[h] = parseInt(postResults[h]);
+      userInputResults[h] += postResults[h];
+    }
+  }
+
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
     data: {
       labels: category,
       datasets: [{
         label: ' Total Macros',
-        data: userInput,
+
+        data: userInputResults,
         color: '#000000',
         backgroundColor: [
           'rgba(125,249,255)',
           'rgba(153,102,204)',
-          'rgba(255,51,204)',
           'rgba(0,255,255)',
           'rgba(42,82,190)',
           'rgba(253,238,0)',
@@ -78,14 +73,13 @@ function renderChart() {
     },
     options: {
       scales: {
-        yAxes: [{
+        xAxes: [{
           plotOptions: {
             series: {
               groupPadding: 0
             }
           },
           barPercentage: 2.0,
-          categoryPercentage: .5,
           ticks: {
             beginAtZero: true
           }
@@ -93,10 +87,10 @@ function renderChart() {
       }
     }
   };
+  var resultsData = JSON.stringify(userInputResults); //pushes data into local storage before refresh
+  resultsPrior.push(resultsData);
+  localStorage.setItem('userInputResults', resultsPrior);
   return new Chart(ctx, chartConfig);
-// var voteData = JSON.stringify(votes); //pushes data into local storage before refresh
-// votesArray.push(voteData);
-// localStorage.setItem('votes', votesArray);
 }
 renderChart();
 var formReset = document.getElementById('form-data');
