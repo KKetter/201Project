@@ -5,32 +5,43 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Arimo%7CBenchNine%7CEncode+Sans+Condensed%7CKhand%7CNunito%7COpen+Sans+Condensed:300%7CRopa+Sans" rel="stylesheet">
 </head>
+
 <body>
   <header>
       <meta charset="utf-8" />
+      <h1>Track Your Macs</h1>
   </header>
   <main id="main-content">
-      <h1>Track Your Macs</h1>
-    <form id="form-data" class="form"></form>
-    <div>
-      <label id="carbs" class="form">Carbs: </label><input id="carbs" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
-      <label id="Prot" class="form">Proteins: </label><input id="Prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
-      <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal" required> <br>
-      <div>
-        <button type="submit" class="button">Track It!</button>
+    <!-- <form id="form-data" class="form"></form> -->
+    <div id="track-bg">
+      <div id="input-box"> 
+        <div class="input">
+          <label id="carbs" class="form">Carbs: </label><input id="carbs" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
+          <label id="prot" class="form">Proteins: </label><input id="prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
+          <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal" required> <br> 
+        </div>
       </div>  
+
+      <div id="trackit">
+        <div>
+        <button type="submit" class="button">Track It!</button>
+        </div>
+      </div> 
     </div>
-    
-    <div id="chart-div">
-      <canvas id="myChart" width="400" height="500"></canvas>
-  </div>
-  </form>
-    <div class="button">
-      <div id="reset"></div>
-    </div>
+      <div id="chart-div">
+        <canvas id="myChart" width="200" height="200"></canvas>
+      </div>
+
+    <!-- </form> -->
+      <div id="reset">
+        <div>
+          <button type="submit" class="button">Reset Your Macs</button>
+        </div>
+      </div>  
   </main>
+ 
   <footer>
     <nav>
       <a href="index.html">Home</a>
@@ -38,6 +49,7 @@
       <a href="index.html">Resources</a>
     </nav>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
