@@ -8,7 +8,6 @@ var userInput2 = [];
 var ctx = document.getElementById('myChart').getContext('2d'); //hook for chart
 
 function Macros(newCarbs, newProt, newFats) {
-  
   this.newCarbs = newCarbs;
   this.newProt = newProt;
   this.newFats = newFats;
