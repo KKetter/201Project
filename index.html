@@ -14,12 +14,21 @@
   <main id="main-content">
       <h1>Track Your Macs</h1>
     <form id="form-data" class="form">
+
+    <fieldset>
+    <label id="carbs" class="form">Grams of Carbs Per Meal: </label><input id="carbs" name="newCarbs" type="number" placeholder="carbs Per Meal" required><br>
+    <label id="prot" class="form">Proteins Per Meal: </label><input id="Prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
+    <label id="fats" class="form">Fats Per Meal: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal required"> <br>
+    <button type="submit" class="submit">Submit Your Info: </button>
+    </fieldset>
+
     <div>
       <label id="carbs" class="form">Carbs: </label><input id="carbs" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
       <label id="Prot" class="form">Proteins: </label><input id="Prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
       <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal" required> <br>
       <button type="submit" class="submit">Track It!</button>
     </div>
+
     <div id="buttons">
       <div id="reset"></div>
     </div>
@@ -35,6 +44,7 @@
       <a href="index.html">Resources</a>
     </nav>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
