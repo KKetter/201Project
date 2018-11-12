@@ -23,7 +23,6 @@ function Macros(newCarbs, newProt, newFats) {
   console.log('user input 2', userInput2);
   renderChart();
 }
-
 function renderChart() {
   var userInputResults = [userInput0[0], userInput1[0], userInput2[0]];
   var resultsPrior = [];
