@@ -37,14 +37,14 @@ function renderChart() {
   console.log('postResults', typeof postResults);
   console.log('stored results', postResults);
   console.log(userInputResults);
-  if (localStorage.getItem('userInputResults')) {
-    var storedData = localStorage.getItem('userInputResults');
-    postResults = JSON.parse(storedData);
-    for (var h = 0; h < category.length; h++) {
-      postResults[h] = parseInt(postResults[h]);
-      userInputResults[h] += postResults[h];
-    }
-  }
+  // if (localStorage.getItem('userInputResults')) {
+  //   var storedData = localStorage.getItem('userInputResults');
+  //   postResults = JSON.parse(storedData);
+  //   for (var h = 0; h < category.length; h++) {
+  //     postResults[h] = parseInt(postResults[h]);
+  //     userInputResults[h] += postResults[h];
+  //   }
+  // }
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
     data: {
