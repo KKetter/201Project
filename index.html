@@ -4,8 +4,6 @@
   <title>Macro Tracker</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="./style/reset.css">
-  <link rel="stylesheet" href="./style/salesstyle.css">
-
 </head>
 <body>
   <header>
@@ -13,16 +11,21 @@
   </header>
   <main id="main-content">
       <h1>Track Your Macs</h1>
-    <form id="form-data" class="form">
+    <form id="form-data" class="form"></form>
     <div>
       <label id="carbs" class="form">Carbs: </label><input id="carbs" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
       <label id="Prot" class="form">Proteins: </label><input id="Prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
       <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal" required> <br>
-      <button type="submit" class="submit">Track It!</button>
+      <div>
+        <button type="submit" class="submit">Track It!</button>
+      </div>  
     </div>
     <div id="buttons">
       <div id="reset"></div>
     </div>
+    <div id="chart-div">
+      <canvas id="myChart" width="400" height="500"></canvas>
+  </div>
   </form>
   </main>
   <footer>
