@@ -22,13 +22,22 @@ function Macros(newCarbs, newProt, newFats) {
   console.log('user input 2', userInput2);
   renderChart();
 }
+function macroNumbers () {
+  for (var i = 0; i < category.lengti; i++) {
+    userInput0[i] = parseInt(userInput0[i]);
+    console.log('for loop parse', userInput0);
+  }
+}
+macroNumbers();
 function renderChart() {
   var userInputResults = [userInput0[0], userInput1[0], userInput2[0]];
   var resultsPrior = [];
   console.log('results Array', resultsPrior);
   var postResults = [];
+  console.log('postResults', typeof postResults);
   console.log('stored results', postResults);
   console.log(userInputResults);
+
   if (localStorage.getItem('userInputResults')) {
     var storedData = localStorage.getItem('userInputResults');
     postResults = JSON.parse(storedData);
@@ -37,7 +46,6 @@ function renderChart() {
       userInputResults[h] += postResults[h];
     }
   }
-
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
     data: {
@@ -89,6 +97,9 @@ function renderChart() {
   };
   var resultsData = JSON.stringify(userInputResults); //pushes data into local storage before refresh
   resultsPrior.push(resultsData);
+  console.log('results data',typeof resultsData);
+  console.log('results data',typeof resultsPrior);
+
   localStorage.setItem('userInputResults', resultsPrior);
   return new Chart(ctx, chartConfig);
 }
