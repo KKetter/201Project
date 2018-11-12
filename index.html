@@ -3,7 +3,9 @@
 <head>
   <title>Macro Tracker</title>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="./style/reset.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
   <header>
@@ -17,16 +19,17 @@
       <label id="Prot" class="form">Proteins: </label><input id="Prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
       <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal" required> <br>
       <div>
-        <button type="submit" class="submit">Track It!</button>
+        <button type="submit" class="button">Track It!</button>
       </div>  
     </div>
-    <div id="buttons">
-      <div id="reset"></div>
-    </div>
+    
     <div id="chart-div">
       <canvas id="myChart" width="400" height="500"></canvas>
   </div>
   </form>
+    <div class="button">
+      <div id="reset"></div>
+    </div>
   </main>
   <footer>
     <nav>
