@@ -24,12 +24,6 @@ function Macros(newCarbs, newProt, newFats) {
   renderChart();
 }
 
-Macros.prototype.storeMacros = function () {
-  for (var i = 0; i < category.length; i++) {
-    var singleInput = this.newCarbs + this.newProt + this.newFats;
-    this.userInput.push(singleInput);
-  }
-}
 function renderChart() {
   // var votedArray = []; //defined array to tallys votes before refresh
   // var votesArray = []; //defined array for votes each render results
@@ -42,10 +36,20 @@ function renderChart() {
   //   }
   // }
   var userInputResults = [userInput0[0], userInput1[0], userInput2[0]];
-  // console.log(userInputResults);
-  // for (var j = 0; j < userInput.length; j++) {
-  //   userInputResults.push(userInput[j].userInputResults);
-  // }
+  var resultsPrior = [];
+  console.log('results Array', resultsPrior);
+  var postResults = [];
+  console.log('stored results', postResults);
+  console.log(userInputResults);
+  if (localStorage.getItem('userInputResults')) {
+    var storedData = localStorage.getItem('userInputResults');
+    postResults = JSON.parse(storedData);
+    for (var h = 0; h < category.length; h++) {
+      postResults[h] = parseInt(postResults[h]);
+      userInputResults[h] += postResults[h];
+    }
+  }
+
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
     data: {
@@ -94,10 +98,10 @@ function renderChart() {
       }
     }
   };
+  var resultsData = JSON.stringify(userInputResults); //pushes data into local storage before refresh
+  resultsPrior.push(resultsData);
+  localStorage.setItem('userInputResults', resultsPrior);
   return new Chart(ctx, chartConfig);
-// var voteData = JSON.stringify(votes); //pushes data into local storage before refresh
-// votesArray.push(voteData);
-// localStorage.setItem('votes', votesArray);
 }
 renderChart();
 var formReset = document.getElementById('form-data');
