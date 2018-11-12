@@ -1,1 +1,72 @@
+header {
+    background-color: white;
+}
 
+body {
+    background-color: #bfbfbf
+}
+h1 {
+    text-align: center;
+    font-size: 100px;
+    border: solid 1px black;
+}
+
+#track-bg{
+    background-color: azure;
+
+}
+.input {
+    font-size: 30px;
+    text-align: center;
+    font-family:'BenchNine', sans-serif;
+    width: 250px;
+    text-shadow: 1px 1px 0px black;
+    padding-top: 30px;
+}
+
+#input-box {
+    padding-left: 380px;
+}
+
+#carbs {
+    color: #80ffff;
+}
+
+#prot {
+    color: #ff80aa;
+}
+
+#fats {
+    color: #ffe680;
+}
+
+button {
+    font-size: 15px;
+    background-color:  white;
+    padding: 7px 15px;
+    border-radius: 15px;
+}
+
+footer {
+    text-align: center;
+    border: solid 1px black;
+    padding: 10px;
+}
+
+#chart-div {
+    width: 200px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+#trackit {
+    position: absolute;
+    left: 675px;
+    top: 190px;
+}
+
+#reset {
+    position: absolute;
+    left: 675px;
+    top: 400px;
+}

@@ -37,12 +37,14 @@ function renderChart() {
       userInputResults[h] += postResults[h];
     }
   }
+
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
     data: {
       labels: category,
       datasets: [{
         label: ' Total Macros',
+
         data: userInputResults,
         color: '#000000',
         backgroundColor: [
