@@ -1,14 +1,28 @@
+
 header {
-    background-color: white;
+    width: 100%;
+    height: 150px;
+    background-image:url("img/banner3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    border: 2px solid red;
 }
 
 body {
-    background-color: #bfbfbf
+    background-color: rgb(245, 237, 226);
+    width: 100%;
 }
+
 h1 {
+    color: rgb(245, 237, 226);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 5px 5px 5px black;
     text-align: center;
     font-size: 100px;
     border: solid 1px black;
+    width: 50%;
 }
 
 #track-bg {
@@ -62,7 +76,8 @@ footer {
 }
 
 #chart-div {
-    width: 200px;
+    width: 400px;
+    height: 400px;
     padding-top: 30px;
     padding-bottom: 20px;
 }
