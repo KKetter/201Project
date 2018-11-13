@@ -1,60 +1,60 @@
-'use-script';
-
+'use strict';
 var category = ['carbs', 'prot', 'fats'];
-
 var userInput0 = [];
 var userInput1 = [];
 var userInput2 = [];
-console.log(userInput0);
-console.log(userInput1);
-console.log(userInput2);
+var currentInput = [];
+var macrosArray = [];
 var ctx = document.getElementById('myChart').getContext('2d'); //hook for chart
-
 function Macros(newCarbs, newProt, newFats) {
-  
   this.newCarbs = newCarbs;
   this.newProt = newProt;
   this.newFats = newFats;
-  userInput0.push(this.newCarbs);
-  userInput1.push(this.newProt);
-  userInput2.push(this.newFats);
-  renderChart();
-}
-
-Macros.prototype.storeMacros = function () {
-  for (var i = 0; i < category.length; i++) {
-    var singleInput = this.newCarbs + this.newProt + this.newFats;
-    this.userInput.push(singleInput);
-  }
+  userInput0.push(parseInt(this.newCarbs));
+  userInput1.push(parseInt(this.newProt));
+  userInput2.push(parseInt(this.newFats));
+  currentInput = [parseInt(newCarbs), parseInt(newProt), parseInt(newFats)];
+  macrosArray.push(this);
 }
 function renderChart() {
-  // var votedArray = []; //defined array to tallys votes before refresh
-  // var votesArray = []; //defined array for votes each render results
-  // if (localStorage.getItem('votes')) {
-  //   var votesData = localStorage.getItem('votes');
-  //   votedArray = JSON.parse(votesData); //pulls from local storage and pushes into defined array
-  //   for ( var h = 0; h < products.length; h++) {
-  //     votedArray[h] = parseInt(votedArray[h]);
-  //     votes[h] += votedArray[h];
-  //   }
-  // }
-  var userInput = [userInput0, userInput1, userInput2];
-  // console.log(userInputResults);
-  // for (var j = 0; j < userInput.length; j++) {
-  //   userInputResults.push(userInput[j].userInputResults);
-  // }
+  var userInputResults = [];
+  for (var j = 0; j < category.length; j++) {
+    userInputResults.push(currentInput[j]);
+  }
+  var resultsPrior = [];
+  console.log('results Array', resultsPrior);
+  var postResults = [];
+  console.log('postResults', typeof postResults);
+  console.log('stored results', postResults);
+  console.log('userInputResults', userInputResults);
+  console.log('userInput0', userInput0);
+  console.log('userInput1', userInput1);
+  console.log('userInput2', userInput2);
+  if (localStorage.getItem('userInput')) {
+    var storedData = localStorage.getItem('userInput');
+    console.log('storedData', storedData);
+    postResults = JSON.parse(storedData);
+    console.log('postResults', postResults);
+    var intPostResults = Array(3);
+    for (var h = 0; h < category.length; h++) {
+      intPostResults[h] = parseInt(postResults[h]);
+      console.log('intpostresult', intPostResults);
+      userInputResults[h] += parseInt(intPostResults[h]);
+    }
+    console.log('userInputResults', userInputResults);
+  }
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
     data: {
       labels: category,
       datasets: [{
         label: ' Total Macros',
-        data: userInput,
+
+        data: userInputResults,
         color: '#000000',
         backgroundColor: [
           'rgba(125,249,255)',
           'rgba(153,102,204)',
-          'rgba(255,51,204)',
           'rgba(0,255,255)',
           'rgba(42,82,190)',
           'rgba(253,238,0)',
@@ -78,14 +78,13 @@ function renderChart() {
     },
     options: {
       scales: {
-        yAxes: [{
+        xAxes: [{
           plotOptions: {
             series: {
               groupPadding: 0
             }
           },
           barPercentage: 2.0,
-          categoryPercentage: .5,
           ticks: {
             beginAtZero: true
           }
@@ -93,23 +92,23 @@ function renderChart() {
       }
     }
   };
+  var resultsData = JSON.stringify(userInputResults); //pushes data into local storage before refresh
+  resultsPrior.push(resultsData);
+  console.log('results data',typeof resultsData);
+  console.log('results data',typeof resultsPrior);
+  localStorage.setItem('userInput', resultsData);
   return new Chart(ctx, chartConfig);
-// var voteData = JSON.stringify(votes); //pushes data into local storage before refresh
-// votesArray.push(voteData);
-// localStorage.setItem('votes', votesArray);
 }
-renderChart();
+// renderChart();
 var formReset = document.getElementById('form-data');
 formReset.addEventListener('submit', function (event) {
   event.preventDefault();
   var newCarbs = event.target.newCarbs.value;
   var newProt = event.target.newProt.value;
   var newFats = event.target.newFats.value;
-  event.target.store = new Macros(newCarbs, newProt, newFats);
+  new Macros(newCarbs, newProt, newFats);
+  renderChart();
   event.target.newCarbs.value = '';
-  console.log(newCarbs);
   event.target.newProt.value = '';
-  console.log(newProt);
   event.target.newFats.value = '';
-  console.log(newFats);
 });

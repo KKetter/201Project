@@ -1,28 +1,86 @@
+header {
+    background-color: white;
+}
+
 body {
-    font-family: 'BenchNine', sans-serif;
+    background-color: #bfbfbf
 }
-
 h1 {
-    font-size: 50px;
-    border: solid 1px black;
     text-align: center;
-}
-
-#data-input {
-    font-size: 20px;
+    font-size: 100px;
     border: solid 1px black;
-    text-align: center;
 }
 
+#track-bg {
+    background-color: azure;
+    box-shadow: 15px 10px 10px rgb(173, 187, 187);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 30px;
 
-.button {
-    text-align: right;
-    background-color: #bfbfbf;
 }
+.input {
+    border: solid 1px black;
+    font-size: 30px;
+    font-family: 'BenchNine', sans-serif;
+    width: 250px;
+    text-shadow: 1px 1px 0px black;
+    margin: 0 auto;
+}
+
+#carbs {
+    color: #80ffff;
+}
+
+#prot {
+    color: #ff80aa;
+}
+
+#fats {
+    color: #ffe680;
+}
+
+button {
+    font-family:'BenchNine', sans-serif;
+    font-size: 19px;
+    background-color:  white;
+    padding: 1px 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px #999;
+}
+
+.button:hover {background-color: #3e8e41}
 
 footer {
+    font-family:'BenchNine', sans-serif;
+    font-size: 20px;
     text-align: center;
+    border: solid 1px black;
+    padding: 10px;
 }
-/* #ff8080 pink
-#ffe680 yellow
-#99e6e6 blue */
+
+#chart-div {
+    width: 200px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+#trackit {
+    position: absolute;
+    left: 675px;
+    top: 190px;
+}
+
+#reset {
+    position: absolute;
+    left: 675px;
+    top: 400px;
+}
+
+li {
+    display: inline;
+    margin-right: 30px;
+}
+
