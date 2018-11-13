@@ -1,23 +1,39 @@
+
 header {
-    background-color: white;
+    width: 100%;
+    height: 150px;
+    background-image:url("img/banner4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    /* border: 2px solid red; */
 }
 
 body {
-    background-color: #bfbfbf
+    background-color: whitesmoke;
+    width: 100%;
 }
+
 h1 {
+    color: whitesmoke;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 7px 7px 7px black;
     text-align: center;
-    font-size: 100px;
-    border: solid 1px black;
+    font-size: 7vw;
+    /* border: solid 1px black; */
+    height: 150px;
+    font-family: 'Ultra', sans-serif;
+    padding-top: 20px;
 }
 
 #track-bg {
-    background-color: azure;
-    box-shadow: 15px 10px 10px rgb(173, 187, 187);
-    width: 80%;
+    background-color: black;
+    box-shadow: 15px 10px 10px grey;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 25px;
     border-radius: 30px;
 
 }
@@ -31,7 +47,7 @@ h1 {
 }
 
 #carbs {
-    color: #80ffff;
+    color: #ffe680;
 }
 
 #prot {
@@ -39,7 +55,11 @@ h1 {
 }
 
 #fats {
-    color: #ffe680;
+    color: #bf80ff;
+}
+
+#water {
+    color: #80ffff;
 }
 
 button {
@@ -62,7 +82,8 @@ footer {
 }
 
 #chart-div {
-    width: 200px;
+    width: 650px;
+    height: 300px;
     padding-top: 30px;
     padding-bottom: 20px;
 }
