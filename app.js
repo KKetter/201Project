@@ -42,7 +42,7 @@ function renderChart() {
     // console.log('storedData', storedData);
     postResults = JSON.parse(storedData);
     // console.log('postResults', postResults);
-    var intPostResults = Array(4);
+    var intPostResults = Array(3);
     for (var h = 0; h < category1.length; h++) {
       intPostResults[h] = parseInt(postResults[h]);
       // console.log('intpostresult', intPostResults);
@@ -101,16 +101,16 @@ function renderWaterChart() {
   var waterPostResults = [];
   console.log('waterPostResults', typeof waterPostResults);
   console.log('water stored results', waterPostResults);
-  if (localStorage.getItem('userInput')) {
-    var waterStoredData = localStorage.getItem('userInput');
+  if (localStorage.getItem('waterResults')) {
+    var waterStoredData = localStorage.getItem('waterResults');
     console.log('waterStoredData', waterStoredData);
     waterPostResults = JSON.parse(waterStoredData);
     console.log('waterPostResults', waterPostResults);
     var intWaterPostResults = Array(1);
     for (var h = 0; h < category2.length; h++) {
       intWaterPostResults[h] = parseInt(waterPostResults[h]);
-      console.log('intpostresult', intWaterPostResults);
-      waterPostResults[h] += parseInt(intWaterPostResults[h]);
+      console.log('intWaterpostresult', intWaterPostResults);
+      waterResults[h] += parseInt(intWaterPostResults[h]);
     }
     console.log('waterPostResults', waterPostResults);
   }
@@ -146,8 +146,8 @@ function renderWaterChart() {
   };
   var waterResultsData = JSON.stringify(waterResults); //pushes data into local storage before refresh
   console.log('stringify', waterResultsData);
-  localStorage.setItem('waterResults', waterResultsData);
   waterResults.push(waterResultsData);
+  localStorage.setItem('waterResults', waterResultsData);
   console.log('water results data', waterResultsData);
   console.log('water results data', waterResults);
   return new Chart(ctx2, chartConfig);
@@ -160,12 +160,12 @@ formSubmit.addEventListener('submit', function (event) {
   var newFats = event.target.newFats.value;
   var newWater = event.target.newWater.value;
   new Macros(newCarbs, newProt, newFats, newWater);
-  renderChart();
-  renderWaterChart();
   event.target.newCarbs.value = '';
   event.target.newProt.value = '';
   event.target.newFats.value = '';
   event.target.newWater.value = '';
+  renderChart();
+  renderWaterChart();
 });
 var clearOut = function() {
   var reset = document.getElementById('reset-data');
