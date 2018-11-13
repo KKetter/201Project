@@ -22,6 +22,8 @@ function Macros(newCarbs, newProt, newFats, newWater) {
   currentWaterInput = [parseInt(newWater)];
   currentInput = [parseInt(newCarbs), parseInt(newProt), parseInt(newFats),];
   macrosArray.push(this);
+  renderChart();
+  renderWaterChart();
 }
 function renderChart() {
   var userInputResults = [];
@@ -97,6 +99,9 @@ function renderWaterChart() {
     waterResults.push(parseInt(currentWaterInput[j]));
     console.log('water for loop', waterResults);
   }
+  if (waterResults >= 128) {
+    alert('Slow down! Maximum water recommended reached');
+  }
   console.log('water results Array', waterResults);
   var waterPostResults = [];
   console.log('waterPostResults', typeof waterPostResults);
@@ -130,15 +135,11 @@ function renderWaterChart() {
     },
     options: {
       scales: {
-        xAxes: [{
-          plotOptions: {
-            series: {
-              groupPadding: 0
-            }
-          },
-          barPercentage: 2.0,
+        yAxes: [{
           ticks: {
-            beginAtZero: true
+            beginAtZero: true,
+            stepValue: 16,
+            max: 128,
           }
         }]
       }
@@ -152,6 +153,7 @@ function renderWaterChart() {
   console.log('water results data', waterResults);
   return new Chart(ctx2, chartConfig);
 }
+new Macros( 0, 0, 0, 0);
 var formSubmit = document.getElementById('form-data');
 formSubmit.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -164,8 +166,6 @@ formSubmit.addEventListener('submit', function (event) {
   event.target.newProt.value = '';
   event.target.newFats.value = '';
   event.target.newWater.value = '';
-  renderChart();
-  renderWaterChart();
 });
 var clearOut = function() {
   var reset = document.getElementById('reset-data');
