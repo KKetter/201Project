@@ -14,6 +14,7 @@
       <h1>Track Your Macs</h1>
   </header>
   <main id="main-content">
+    
     <form id="form-data" class="form">
     <div id="track-bg">
       <div id="input-box"> 
@@ -24,23 +25,22 @@
           <label id="water" class="form">Water: </label><input id="water" name="newWater" type="number" placeholder="Water Per Meal">
         </div>
       </div>  
-
       <div id="trackit">
         <div>
         <button type="submit" class="button">Track It!</button>
         </div>
       </div> 
-
-      </div>
+    </div>
+    </form>
+    <div id="alltables">
       <div id="chart-div">
         <canvas id="myChart" width="650" height="300"></canvas>
       </div>
       <div id="chart-div">
-        <canvas id="myChart2" width="200" height="200"></canvas>
-      </div>
+        <canvas id="myChart2" width="650" height="300"></canvas>
+      </div> 
     </form>
     <form id="reset-data" class="form">
-
       <div id="reset">
         <div>
           <button type="submit" class="button">Reset Your Macs</button>
@@ -48,7 +48,7 @@
       </div>  
     </form>
   </main>
- 
+ </body>
   <footer>
     <nav>
       <li><a href="index.html">Home</a></li>
@@ -58,5 +58,5 @@
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
   <script src="app.js"></script>
-</body>
+
 </html>
