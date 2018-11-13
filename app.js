@@ -49,6 +49,7 @@ function renderChart() {
       labels: category,
       datasets: [{
         label: ' Total Macros',
+
         data: userInputResults,
         color: '#000000',
         backgroundColor: [
