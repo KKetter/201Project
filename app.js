@@ -1,50 +1,48 @@
-'use-script';
-
+'use strict';
 var category = ['carbs', 'prot', 'fats'];
-
 var userInput0 = [];
 var userInput1 = [];
 var userInput2 = [];
+var currentInput = [];
+var macrosArray = [];
 var ctx = document.getElementById('myChart').getContext('2d'); //hook for chart
-
 function Macros(newCarbs, newProt, newFats) {
   this.newCarbs = newCarbs;
   this.newProt = newProt;
   this.newFats = newFats;
-  console.log('newCarb', newCarbs);
-  console.log('newProt', newProt);
-  console.log('newFats', newFats);
-  userInput0.push(this.newCarbs);
-  userInput1.push(this.newProt);
-  userInput2.push(this.newFats);
-  console.log('user input 0', userInput0);
-  console.log('user input 1', userInput1);
-  console.log('user input 2', userInput2);
-  renderChart();
+  userInput0.push(parseInt(this.newCarbs));
+  userInput1.push(parseInt(this.newProt));
+  userInput2.push(parseInt(this.newFats));
+  currentInput = [parseInt(newCarbs), parseInt(newProt), parseInt(newFats)];
+  macrosArray.push(this);
 }
-function macroNumbers () {
-  for (var i = 0; i < category.lengti; i++) {
-    userInput0[i] = parseInt(userInput0[i]);
-    console.log('for loop parse', userInput0);
-  }
-}
-macroNumbers();
 function renderChart() {
-  var userInputResults = [userInput0[0], userInput1[0], userInput2[0]];
+  var userInputResults = [];
+  for (var j = 0; j < category.length; j++) {
+    userInputResults.push(currentInput[j]);
+  }
   var resultsPrior = [];
   console.log('results Array', resultsPrior);
   var postResults = [];
   console.log('postResults', typeof postResults);
   console.log('stored results', postResults);
-  console.log(userInputResults);
-  // if (localStorage.getItem('userInputResults')) {
-  //   var storedData = localStorage.getItem('userInputResults');
-  //   postResults = JSON.parse(storedData);
-  //   for (var h = 0; h < category.length; h++) {
-  //     postResults[h] = parseInt(postResults[h]);
-  //     userInputResults[h] += postResults[h];
-  //   }
-  // }
+  console.log('userInputResults', userInputResults);
+  console.log('userInput0', userInput0);
+  console.log('userInput1', userInput1);
+  console.log('userInput2', userInput2);
+  if (localStorage.getItem('userInput')) {
+    var storedData = localStorage.getItem('userInput');
+    console.log('storedData', storedData);
+    postResults = JSON.parse(storedData);
+    console.log('postResults', postResults);
+    var intPostResults = Array(3);
+    for (var h = 0; h < category.length; h++) {
+      intPostResults[h] = parseInt(postResults[h]);
+      console.log('intpostresult', intPostResults);
+      userInputResults[h] += parseInt(intPostResults[h]);
+    }
+    console.log('userInputResults', userInputResults);
+  }
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
     data: {
@@ -97,22 +95,19 @@ function renderChart() {
   resultsPrior.push(resultsData);
   console.log('results data',typeof resultsData);
   console.log('results data',typeof resultsPrior);
-
-  localStorage.setItem('userInputResults', resultsPrior);
+  localStorage.setItem('userInput', resultsData);
   return new Chart(ctx, chartConfig);
 }
-renderChart();
+// renderChart();
 var formReset = document.getElementById('form-data');
 formReset.addEventListener('submit', function (event) {
   event.preventDefault();
   var newCarbs = event.target.newCarbs.value;
   var newProt = event.target.newProt.value;
   var newFats = event.target.newFats.value;
-  event.target.store = new Macros(newCarbs, newProt, newFats);
+  new Macros(newCarbs, newProt, newFats);
+  renderChart();
   event.target.newCarbs.value = '';
-  console.log(newCarbs);
   event.target.newProt.value = '';
-  console.log(newProt);
   event.target.newFats.value = '';
-  console.log(newFats);
 });
