@@ -8,6 +8,7 @@ var waterInput = [];
 var currentWaterInput = [];
 var currentInput = [];
 var macrosArray = [];
+console.log('macros Array', macrosArray);
 var ctx = document.getElementById('myChart').getContext('2d');
 var ctx2 = document.getElementById('myChart2').getContext('2d'); //hook for chart
 function Macros(newCarbs, newProt, newFats, newWater) {
@@ -84,27 +85,19 @@ function renderWaterChart() {
   var waterResults = [];
   for (var j = 0; j < category2.length; j++) {
     waterResults.push(parseInt(currentWaterInput[j]));
-    console.log('water for loop', waterResults);
   }
   if (waterResults >= 128) {
     alert('Slow down! Maximum water recommended reached');
   }
-  console.log('water results Array', waterResults);
   var waterPostResults = [];
-  console.log('waterPostResults', typeof waterPostResults);
-  console.log('water stored results', waterPostResults);
   if (localStorage.getItem('waterResults')) {
     var waterStoredData = localStorage.getItem('waterResults');
-    console.log('waterStoredData', waterStoredData);
     waterPostResults = JSON.parse(waterStoredData);
-    console.log('waterPostResults', waterPostResults);
     var intWaterPostResults = Array(1);
     for (var h = 0; h < category2.length; h++) {
       intWaterPostResults[h] = parseInt(waterPostResults[h]);
-      console.log('intWaterpostresult', intWaterPostResults);
       waterResults[h] += parseInt(intWaterPostResults[h]);
     }
-    console.log('waterPostResults', waterPostResults);
   }
   var chartConfig = { //defined variable to hold chart properties
     type: 'bar',
@@ -143,11 +136,8 @@ function renderWaterChart() {
     }
   };
   var waterResultsData = JSON.stringify(waterResults); //pushes data into local storage before refresh
-  console.log('stringify', waterResultsData);
   waterResults.push(waterResultsData);
   localStorage.setItem('waterResults', waterResultsData);
-  console.log('water results data', waterResultsData);
-  console.log('water results data', waterResults);
   return new Chart(ctx2, chartConfig);
 }
 new Macros( 0, 0, 0, 0);
