@@ -16,17 +16,20 @@
     <div id="track-bg">
       <div id="input-box"> 
         <div class="input">
-          <label id="carbs" class="form">Carbs: </label><input id="carbs" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
-          <label id="prot" class="form">Proteins: </label><input id="prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
-          <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal" required> <br> 
-          <label id="water" class="form">Water: </label><input id="water" name="newWater" type="number" placeholder="Water Per Meal" required>
+          <label id="carbs" class="form">Carbs: </label><input id="carbstext" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
+          <label id="prot" class="form">Proteins: </label><input id="prottext" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
+          <label id="fats" class="form">Fats: </label><input id="fatstext" name="newFats" type="number" placeholder="Fats Per Meal" required> <br> 
+          <label id="water" class="form">Water: </label><input id="watertext" name="newWater" type="number" placeholder="Water Per Meal" required>
         </div>
+       <div id="buttonbox">
+        <div id="trackit">
+          <button type="submit" class="button">Submit</button>
+        </div> 
+        <div id="reset">
+            <button type="submit" class="button">Reset</button>
+        </div> 
+       </div> 
       </div>  
-      <div id="trackit">
-        <div>
-        <button type="submit" class="button">Track It!</button>
-        </div>
-      </div> 
     </div>
     </form>
     <div id="alltables">
@@ -36,13 +39,9 @@
       <div id="chart-div">
         <canvas id="myChart2" width="650" height="300"></canvas>
       </div> 
+      <canvas id="water-art" width="650" height="300"></canvas>
     </form>
     <form id="reset-data" class="form">
-      <div id="reset">
-        <div>
-          <button type="submit" class="button">Reset Your Macs</button>
-        </div>
-      </div>  
     </form>
   </main>
  </body>
