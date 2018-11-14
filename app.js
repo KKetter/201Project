@@ -76,7 +76,7 @@ function renderChart() {
       }
     }
   };
-  var resultsData = JSON.stringify(userInputResults); //pushes data into local storage before refresh
+  var resultsData = JSON.stringify(userInputResults); //pushes data into local storage prior to refresh
   resultsPrior.push(resultsData);
   localStorage.setItem('userInput', resultsData);
   return new Chart(ctx, chartConfig);
