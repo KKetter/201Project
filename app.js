@@ -136,10 +136,20 @@ function renderWaterChart() {
     options: {
       scales: {
         yAxes: [{
+          gridLines: {
+            lineWidth: 0,
+            color: 'rgba(255,255,255,0)'
+          },
           ticks: {
             beginAtZero: true,
             stepValue: 16,
             max: 128,
+          }
+        }],
+        xAxes: [{
+          gridLines: {
+            lineWidth: 0,
+            color: 'rgba(255,255,255,0)'
           }
         }]
       }
