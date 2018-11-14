@@ -7,22 +7,19 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Arimo%7CBenchNine%7CEncode+Sans+Condensed%7CKhand%7CNunito%7COpen+Sans+Condensed:300%7CRopa+Sans" rel="stylesheet">
 </head>
-
 <body>
   <header>
-      <!-- <meta charset="utf-8" /> -->
       <h1>Track Your Macs</h1>
   </header>
   <main id="main-content">
-    
     <form id="form-data" class="form">
     <div id="track-bg">
       <div id="input-box"> 
         <div class="input">
-          <label id="carbs" class="form">Carbs: </label><input id="carbs" name="newCarbs" type="number" placeholder="Carbs Per Meal"><br>
-          <label id="prot" class="form">Proteins: </label><input id="prot" name="newProt" type="number" placeholder="Proteins Per Meal"><br>
-          <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal"> <br> 
-          <label id="water" class="form">Water: </label><input id="water" name="newWater" type="number" placeholder="Water Per Meal">
+          <label id="carbs" class="form">Carbs: </label><input id="carbs" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
+          <label id="prot" class="form">Proteins: </label><input id="prot" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
+          <label id="fats" class="form">Fats: </label><input id="fats" name="newFats" type="number" placeholder="Fats Per Meal" required> <br> 
+          <label id="water" class="form">Water: </label><input id="water" name="newWater" type="number" placeholder="Water Per Meal" required>
         </div>
       </div>  
       <div id="trackit">
@@ -58,5 +55,4 @@
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
   <script src="app.js"></script>
-
 </html>
