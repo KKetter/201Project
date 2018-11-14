@@ -31,26 +31,15 @@ function renderChart() {
     userInputResults.push(currentInput[j]);
   }
   var resultsPrior = [];
-  // console.log('results Array', resultsPrior);
   var postResults = [];
-  // console.log('postResults', typeof postResults);
-  // console.log('stored results', postResults);
-  // console.log('userInputResults', userInputResults);
-  // console.log('userInput0', userInput0);
-  // console.log('userInput1', userInput1);
-  // console.log('userInput2', userInput2);
   if (localStorage.getItem('userInput')) {
     var storedData = localStorage.getItem('userInput');
-    // console.log('storedData', storedData);
     postResults = JSON.parse(storedData);
-    // console.log('postResults', postResults);
     var intPostResults = Array(3);
     for (var h = 0; h < category1.length; h++) {
       intPostResults[h] = parseInt(postResults[h]);
-      // console.log('intpostresult', intPostResults);
       userInputResults[h] += parseInt(intPostResults[h]);
     }
-    // console.log('userInputResults', userInputResults);
   }
   var chartConfig = { //defined variable to hold chart properties
     type: 'horizontalBar',
@@ -88,8 +77,6 @@ function renderChart() {
   };
   var resultsData = JSON.stringify(userInputResults); //pushes data into local storage before refresh
   resultsPrior.push(resultsData);
-  // console.log('results data',typeof resultsData);
-  // console.log('results data',typeof resultsPrior);
   localStorage.setItem('userInput', resultsData);
   return new Chart(ctx, chartConfig);
 }
