@@ -16,16 +16,16 @@
     <div id="track-bg">
       <div id="input-box"> 
         <div class="input">
-          <label id="carbs" class="form">Carbs: </label><input id="carbstext" name="newCarbs" type="number" placeholder="Carbs Per Meal" required><br>
-          <label id="prot" class="form">Proteins: </label><input id="prottext" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
-          <label id="fats" class="form">Fats: </label><input id="fatstext" name="newFats" type="number" placeholder="Fats Per Meal" required> <br> 
-          <label id="water" class="form">Water: </label><input id="watertext" name="newWater" type="number" placeholder="Water Per Meal" required>
+          <label id="carbs" class="form">Carbs: </label><input id="carbstext" name="newCarbs" type="number" placeholder="grams of Carbs" required><br>
+          <label id="prot" class="form">Proteins: </label><input id="prottext" name="newProt" type="number" placeholder="grams of Proteins" required><br>
+          <label id="fats" class="form">Fats: </label><input id="fatstext" name="newFats" type="number" placeholder="grams of Fats" required> <br> 
+          <label id="water" class="form">Water: </label><input id="watertext" name="newWater" type="number" placeholder="oz of Water" required>
         </div>
        <div id="buttonbox">
         <div id="trackit">
           <button type="submit" class="button">Submit</button>
         </div> 
-        </div>div>
+        </div>
       </form>
       <form id="reset-data" class="form">
             <div id="reset">
@@ -35,17 +35,22 @@
         </div>  
       </form>
     </div>
-    <div id="alltables">
+    <div id="toptables">
       <div id="chart-div">
-        <canvas id="myChart" width="650" height="300"></canvas>
+        <canvas id="myChart" width="40%" height="20%"></canvas>
       </div>
       <div id="chart-div">
-        <canvas id="myPieChart" width="650" height="300"></canvas>
+        <canvas id="myPieChart" width="40%" height="20%"></canvas>
       </div> 
+    </div>  
+    <div id="watertable">
       <div id="chart-div">
-        <canvas id="myChart2" width="650" height="300"></canvas>
+        <canvas id="myChart2" width="50%" height="25%"></canvas>
+        <canvas id="water-art" width="100%" height="100%"></canvas>
       </div> 
-      <canvas id="water-art" width="650" height="300"></canvas>
+    </div>   
+      
+    
   </main>
  </body>
   <footer>
