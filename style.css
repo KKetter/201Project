@@ -69,7 +69,7 @@ body {
 
 #prot {
     color: #bf1093;
-    margin-right: .75vw;
+    margin-right: .9vw;
 }
 
 #fats {
@@ -79,7 +79,7 @@ body {
 
 #water {
     color: #07b9fc;
-    margin-right: 1.9vw;
+    margin-right: 2vw;
 }
 
 #buttonbox {
@@ -103,21 +103,21 @@ button {
     display: inline-block;
     position: relative;
     left: 3.4vw;
-    top: -4vw;
+    top: -3.5vw;
     /* border: 1px solid blue; */
 }
 
 #reset {
     display: inline-block;
     position: relative;
-    left: 0vw;
+    left: .45vw;
     top: -1vw;
 
 }
 #tracker {
     display: inline-block;
     position: absolute;
-    font-size: 15px;
+    font-size: 18px;
     right: 24.5vw;
     top: 16vw;
     font-family: 'BenchNine', sans-serif;
