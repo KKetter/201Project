@@ -4,8 +4,8 @@ if (!trackerData) {
   localStorage.getItem('trackResults', 0);
 }
 console.log('top tracker data', trackerData);
-var category1 = ['carbs', 'prot', 'fats'];
-var category2 = ['water'];
+var category1 = ['Carbs', 'Proteins', 'Fats'];
+var category2 = ['Water'];
 var userInput0 = [];
 var userInput1 = [];
 var userInput2 = [];
@@ -35,29 +35,30 @@ function Macros(newCarbs, newProt, newFats, newWater) {
   renderPieChart();
   renderChart();
   renderWaterChart();
-  storeTrackerData();
+  renderTracker();
 }
-// function renderTracker () {
-// }
-function storeTrackerData() {
-  console.log('tracker data prior', trackerData);
-  if (localStorage.getItem('trackResults')) {
-    var trackerPostResults = 0;
-    var pullStoredResults = localStorage.getItem('trackResults');
-    trackerPostResults = JSON.parse(pullStoredResults);
-    trackerData += trackerPostResults;
-    console.log('tracker data post', trackerData);
-
-  } else {
-    console.log('we in da else');
-    trackerData = parseInt(totalInputs);
-  }
-  var trackerResultsData = JSON.stringify(trackerData);
-  localStorage.setItem('trackResults', trackerResultsData);
+function renderTracker () {
+  var trackerPostResults = 0;
+  var pullStoredResults = localStorage.getItem('trackResults');
+  trackerPostResults = JSON.parse(pullStoredResults);
   var divHook = document.getElementById('tracker');
   var spanEl = document.createElement('span');
-  spanEl.textContent = trackerData;
+  spanEl.textContent = trackerPostResults;
   divHook.appendChild(spanEl);
+}
+function storeTrackerData () {
+  var trackerPostResults = 0;
+  if (localStorage.getItem('trackResults')){
+    var pullStoredResults = localStorage.getItem('trackResults');
+    trackerPostResults = JSON.parse(pullStoredResults);
+    trackerData = trackerPostResults + 1;
+    console.log('tracker data post', trackerData);
+  } else{
+    trackerData = totalInputs;
+  }
+  console.log('tracker data prior', trackerData); 
+  var trackerResultsData = JSON.stringify(trackerData);
+  localStorage.setItem('trackResults', trackerResultsData);
 }
 
 
@@ -87,13 +88,13 @@ function renderChart() {
 
         data: userInputResults,
         color: '#000000',
-        backgroundColor: ['#ffe680', '#ff80aa', '#bf80ff',],
+        backgroundColor: ['#ffb300', '#bf1093', '#009543',],
         borderColor: [],
         borderWidth: 2
       }]
     },
     options: {
-      legend: { display: false },
+      legend: {display: false},
       scales: {
         xAxes: [{
           plotOptions: {
@@ -139,7 +140,7 @@ function renderPieChart() {
 
         data: userInputResults,
         color: '#000000',
-        backgroundColor: ['#ffe680', '#ff80aa', '#bf80ff',],
+        backgroundColor: ['#ffb300', '#bf1093', '#009543',],
         borderColor: [],
         borderWidth: 2
       }]
@@ -175,13 +176,13 @@ function renderWaterChart() {
 
         data: waterResults,
         color: '#000000',
-        backgroundColor: ['#80ffff'],
+        backgroundColor: ['#07b9fc'],
         borderColor: [],
         borderWidth: 2
       }]
     },
     options: {
-      legend: { display: false },
+      legend: {display: false},
       scales: {
         yAxes: [{
           gridLines: {
@@ -208,10 +209,10 @@ function renderWaterChart() {
   localStorage.setItem('waterResults', waterResultsData);
   return new Chart(ctx2, chartConfig);
 }
-new Macros(0, 0, 0, 0);
+new Macros( 0, 0, 0, 0);
 var formSubmit = document.getElementById('form-data');
 formSubmit.addEventListener('submit', function (event) {
-  event.preventDefault();
+  // event.preventDefault();
   var newCarbs = event.target.newCarbs.value;
   var newProt = event.target.newProt.value;
   var newFats = event.target.newFats.value;
@@ -222,12 +223,12 @@ formSubmit.addEventListener('submit', function (event) {
   event.target.newFats.value = '';
   event.target.newWater.value = '';
   totalInputs += 1;
-  // storeTrackerData();
+  storeTrackerData();
   console.log('totalinputs after listener', totalInputs);
 });
-var clearOut = function () {
+var clearOut = function() {
   var reset = document.getElementById('reset-data');
-  reset.addEventListener('click', function () {
+  reset.addEventListener ('click', function() {
     if (window.confirm('Do you really want to clear your macros?')) {
       localStorage.clear();
       location.reload();
