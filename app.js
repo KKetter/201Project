@@ -8,7 +8,8 @@ var waterInput = [];
 var currentWaterInput = [];
 var currentInput = [];
 var macrosArray = [];
-var totalInputs =[];
+var totalInputs = 0;
+var currentTrackerData = 0;
 console.log('total input macros', totalInputs);
 console.log('macros Array', macrosArray);
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -19,6 +20,7 @@ function Macros(newCarbs, newProt, newFats, newWater) {
   this.newProt = newProt;
   this.newFats = newFats;
   this.newWater = newWater;
+  this.currentTrackerData = currentTrackerData;
   userInput0.push(parseInt(this.newCarbs));
   userInput1.push(parseInt(this.newProt));
   userInput2.push(parseInt(this.newFats));
@@ -29,15 +31,32 @@ function Macros(newCarbs, newProt, newFats, newWater) {
   renderPieChart();
   renderChart();
   renderWaterChart();
-  // calculateEachInput();
+  renderTracker ();
+  // storeTrackerData ();
 }
-// function calculateEachInput (event) {
-//   var sumEachInput = [];
-//   console.log('sumeachinput', sumEachInput);
-//   for (var i = 1; i <macrosArray.length; i++) {
-//     totalInputs.push(macrosArray++);
-//   }
-// }
+function renderTracker () {
+  storeTrackerData();
+  var divHook = document.getElementById('tracker');
+  var spanEl = document.createElement('span');
+  spanEl.textContent = currentTrackerData;
+  divHook.appendChild(spanEl);
+}
+function storeTrackerData () {
+  var trackerData = 0;
+  console.log('tracker data prior', trackerData);
+  // for (var j = 0; j < category2.length; j++) {
+  //   trackerData.push(parseInt(totalInputs));
+  // }
+  var trackerPostResults = 0;
+  var trackerResultsData = JSON. stringify(totalInputs);
+  localStorage.setItem('trackResults', trackerResultsData);
+
+  var pullStoredResults = localStorage.getItem('trackResults');
+  trackerPostResults = JSON.parse(pullStoredResults);
+  trackerData += trackerPostResults;
+  // currentTrackerData.push(trackerData);
+  console.log('tracker data post', trackerData);
+}
 function renderChart() {
   var userInputResults = [];
   console.log('bar chart userinputresults', userInputResults);
@@ -70,6 +89,7 @@ function renderChart() {
       }]
     },
     options: {
+      legend: {display: false},
       scales: {
         xAxes: [{
           plotOptions: {
@@ -120,13 +140,7 @@ function renderPieChart() {
         borderWidth: 2
       }]
     },
-    // options: {
-    //   animations: {
-    //     animateRotate: false
-    //   }
-    // }
   };
-  
   return new Chart(ctx3, myPieChart);
 }
 function renderWaterChart() {
@@ -162,6 +176,7 @@ function renderWaterChart() {
       }]
     },
     options: {
+      legend: {display: false},
       scales: {
         yAxes: [{
           gridLines: {
@@ -201,7 +216,9 @@ formSubmit.addEventListener('submit', function (event) {
   event.target.newProt.value = '';
   event.target.newFats.value = '';
   event.target.newWater.value = '';
-  totalInputs++;
+  totalInputs += 1;
+  storeTrackerData ();
+  console.log('totalinputs after listener', totalInputs);
 });
 var clearOut = function() {
   var reset = document.getElementById('reset-data');
