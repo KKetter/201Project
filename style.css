@@ -51,7 +51,6 @@ body {
 }
 
 .input {
-    border: solid 1px black;
     font-size: 3vh;
     font-family: 'BenchNine', sans-serif;
     text-shadow: 1px 1px 0px black;
@@ -70,7 +69,7 @@ body {
 
 #prot {
     color: #bf1093;
-    margin-right: 0.75vw;
+    margin-right: .75vw;
 }
 
 #fats {
@@ -118,9 +117,10 @@ button {
 #tracker {
     display: inline-block;
     position: absolute;
-    font-size: 10px;
+    font-size: 15px;
     right: 24.5vw;
     top: 16vw;
+    font-family: 'BenchNine', sans-serif;
 }
 
 #toptables {
