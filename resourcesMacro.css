@@ -6,18 +6,22 @@ header {
   background-size: cover;
   background-position: center; 
 }
+body{
+  background-image: linear-gradient(whitesmoke,#ffb300);
+}
 
 h1 {
   color: whitesmoke;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: black;
-  text-shadow: 7px 7px 7px black;
-  text-align: center;
-  font-size: 7vw;
-  /* border: solid 1px black; */
-  height: 16vh;
-  font-family: 'Ultra', sans-serif;
-  padding-top: 4vh;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 7px 7px 7px black;
+    text-align: center;
+    font-size: 7vw;
+    /* border: solid 1px purple; */
+    height: 100%;
+    font-family: 'Ultra', sans-serif;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
 
 #macroHeader{
@@ -33,7 +37,7 @@ font-size: 6.75vh;
 border-radius: 30px;
 text-align: center;
 padding: 20px 0px 20px 0px;
-width: 20vw;
+width: 22vw;
 background: black;
 margin: 25px 10px 25px 10px;
 
@@ -43,7 +47,7 @@ margin: 25px 10px 25px 10px;
    font-family: 'Nunito', sans-serif;
    font-size: 3vh;
    width: 50vw;
-   margin: 5px 0px 5px 10px;
+   margin: 5px 0px 10px 10px;
  }
  img{
    position: relative;
@@ -82,16 +86,19 @@ font-size: 6.75vh;
 border-radius: 30px;
 text-align: center;
 padding: 20px 0px 25px 0px;
-width: 20vw;
+width: 22vw;
 height: 3vw;
 background: black;
 margin: 35px 10px 20px 10px;
 }
 #waterP{
   font-family: 'Nunito', sans-serif;
-   font-size: 20px;
+   font-size: 3vh;
    width: 50vw;
    margin: 0px 0px 0px 10px;
+}
+#waterlink{
+  list-style-type: none;
 }
 #why{
   font-size: 3.75vh;
@@ -110,6 +117,7 @@ margin: 35px 10px 20px 10px;
   font-family: 'Nunito', sans-serif;
   font-size: 3vh;
   width: 55%;
+  text-decoration: none;
 }
 h4{
   margin: 10px 10px 10px 10px;
@@ -154,22 +162,24 @@ a:hover {
   margin: auto;
 } */
 
-li {
+.nav{
   display: inline;
   margin-right: 2vw;
 }
 footer{
   background-image:url("img/banner4.jpg");
-  font-family:'BenchNine', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    font-family:'BenchNine', sans-serif;
     font-size: 3vh;
     text-align: center;
     border: solid 1px black;
     padding: 1vh;
     position: fixed;
     bottom: 0;
-    width: 100%;    
-    padding: 1rem;
-
+    width: 100%;  
+ 
 }
 /* nav{
   text-align: center; 
