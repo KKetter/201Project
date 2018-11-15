@@ -5,14 +5,9 @@ header {
     background-image:url("img/banner4.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; 
+    background-position: center;
+    border: solid 1px black; 
     /* border: 2px solid red; */
-}
-
-body {
-    background-image: linear-gradient(whitesmoke,#ffb300);
-    width: 100%;
-    min-height: 100vh;
 }
 
 h1 {
@@ -29,10 +24,20 @@ h1 {
     padding-bottom: 2vh;
 }
 
+body {
+    background-image: linear-gradient(whitesmoke,#ffb300);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: whitesmoke;
+    width: 100%;
+    min-height: 100vh;
+}
+
 #track-bg {
     background-color: black;
     box-shadow: 15px 10px 10px grey;
-    width: 20%;
+    width: 25%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 3vh;
@@ -60,18 +65,22 @@ h1 {
 
 #carbs {
     color: #ffb300;
+    margin-right: 2.3vw;
 }
 
 #prot {
     color: #bf1093;
+    margin-right: 0.8vw;
 }
 
 #fats {
     color: #009543;
+    margin-right: 3vw;
 }
 
 #water {
     color: #07b9fc;
+    margin-right: 2vw;
 }
 
 #buttonbox {
@@ -88,26 +97,30 @@ button {
     box-shadow: 0 2px #999;
 }
 
-#trackit button:hover {background-color: #3e8e41}
-#reset button:hover {background-color: #07b9fc}
-
-#trackit, #reset {
-    display: inline-block;
-    /* border: 1px solid blue; */
-}
+#trackit button:hover {background-color: rgb(180, 179, 179)}
+#reset button:hover {background-color: rgb(85, 84, 84)}
 
 #trackit {
-    margin-left: 10%;
+    display: inline-block; 
+    margin-left: 30%;
+    /* border: 1px solid blue; */
 }
 
 #reset {
     display: inline-block;
-    margin-left: 40%;
+    margin-left: 35%;
+}
+#tracker {
+    display: inline-block;
+    margin: auto;
 }
 
 #toptables {
     text-align: center;
-    margin: auto;
+    margin-top: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2vh;
 }
 
 #watertable {
@@ -124,15 +137,15 @@ button {
     display: inline-block;
 }
 
-#water-art {
+/* #water-art {
     background-image: url("./img/drop300.2.png");
     background-repeat: no-repeat;
     background-position: center;
     height: 100%;
     width: 100%;
     position: relative;
-    top: -400px;
-}
+    top: -51vh;
+} */
 
 #myChart2 {
     background-repeat: no-repeat;
@@ -152,6 +165,10 @@ li {
 }
 
 footer {
+    background-image:url("img/banner4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
     font-family:'BenchNine', sans-serif;
     font-size: 3vh;
     text-align: center;
@@ -161,3 +178,4 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
