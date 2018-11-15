@@ -112,7 +112,8 @@ button {
 }
 #tracker {
     display: inline-block;
-    margin: auto;
+    position: absolute;
+    left: 50%;
 }
 
 #toptables {
