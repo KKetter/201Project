@@ -43,7 +43,7 @@ function renderTracker () {
   trackerPostResults = JSON.parse(pullStoredResults);
   var divHook = document.getElementById('tracker');
   var spanEl = document.createElement('span');
-  spanEl.textContent = trackerPostResults;
+  spanEl.textContent = 'Total Submissions: ' + trackerPostResults;
   divHook.appendChild(spanEl);
 }
 function storeTrackerData () {
@@ -56,12 +56,16 @@ function storeTrackerData () {
   } else{
     trackerData = totalInputs;
   }
-  console.log('tracker data prior', trackerData); 
+  console.log('tracker data prior', trackerData);
   var trackerResultsData = JSON.stringify(trackerData);
   localStorage.setItem('trackResults', trackerResultsData);
 }
-
-
+var imgSteak = new Image();
+imgSteak.src = 'img/steak1.jfif';
+var imgDonut = new Image();
+imgDonut.src = 'img/donut1.png';
+var imgCheese = new Image();
+imgCheese.src = 'img/macncheese.png';
 function renderChart() {
   var userInputResults = [];
   console.log('bar chart userinputresults', userInputResults);
@@ -79,41 +83,46 @@ function renderChart() {
       userInputResults[h] += parseInt(intPostResults[h]);
     }
   }
-  var chartConfig = { //defined variable to hold chart properties
-    type: 'horizontalBar',
-    data: {
-      labels: category1,
-      datasets: [{
-        label: ' Total Macros',
+  imgSteak.onload = function () {
+    var fillPatternS = ctx2.createPattern(imgSteak, 'repeat');
+    var fillPatternD = ctx2.createPattern(imgDonut, 'repeat');
+    var fillPatternC = ctx2.createPattern(imgCheese, 'repeat');
+    var chartConfig = { //defined variable to hold chart properties
+      type: 'horizontalBar',
+      data: {
+        labels: category1,
+        datasets: [{
+          label: ' Total Macros',
 
-        data: userInputResults,
-        color: '#000000',
-        backgroundColor: ['#ffb300', '#bf1093', '#009543',],
-        borderColor: [],
-        borderWidth: 2
-      }]
-    },
-    options: {
-      legend: {display: false},
-      scales: {
-        xAxes: [{
-          plotOptions: {
-            series: {
-              groupPadding: 0
-            }
-          },
-          barPercentage: 2.0,
-          ticks: {
-            beginAtZero: true
-          }
+          data: userInputResults,
+          color: '#000000',
+          backgroundColor: [fillPatternC, fillPatternS, fillPatternD,],
+          borderColor: [],
+          borderWidth: 2
         }]
+      },
+      options: {
+        legend: { display: false },
+        scales: {
+          xAxes: [{
+            plotOptions: {
+              series: {
+                groupPadding: 0
+              }
+            },
+            barPercentage: 2.0,
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
-    }
+    };
+    return new Chart(ctx, chartConfig);
   };
   var resultsData = JSON.stringify(userInputResults); //pushes data into local storage prior to refresh
   resultsPrior.push(resultsData);
   localStorage.setItem('userInput', resultsData);
-  return new Chart(ctx, chartConfig);
 }
 function renderPieChart() {
   var userInputResults = [];
@@ -148,6 +157,9 @@ function renderPieChart() {
   };
   return new Chart(ctx3, myPieChart);
 }
+
+var imgWater = new Image();
+imgWater.src = 'img/chartdrop1.png';
 function renderWaterChart() {
   var waterResults = [];
   console.log('water results', waterResults);
@@ -167,47 +179,51 @@ function renderWaterChart() {
       waterResults[h] += parseInt(intWaterPostResults[h]);
     }
   }
-  var chartConfig = { //defined variable to hold chart properties
-    type: 'bar',
-    data: {
-      labels: category2,
-      datasets: [{
-        label: ' Total Water',
+  imgWater.onload = function () {
+    var fillPattern = ctx2.createPattern(imgWater, 'repeat');
+    var chartConfig = { //defined variable to hold chart properties
+      type: 'bar',
+      data: {
+        labels: category2,
+        datasets: [{
+          label: ' Total Water',
 
-        data: waterResults,
-        color: '#000000',
-        backgroundColor: ['#07b9fc'],
-        borderColor: [],
-        borderWidth: 2
-      }]
-    },
-    options: {
-      legend: {display: false},
-      scales: {
-        yAxes: [{
-          gridLines: {
-            lineWidth: 0,
-            color: 'rgba(255,255,255,0)'
-          },
-          ticks: {
-            beginAtZero: true,
-            stepValue: 16,
-            max: 128,
-          }
-        }],
-        xAxes: [{
-          gridLines: {
-            lineWidth: 0,
-            color: 'rgba(255,255,255,0)'
-          }
+          data: waterResults,
+          color: '#000000',
+          backgroundColor: fillPattern,
+          borderColor: [],
+          borderWidth: 2
         }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          yAxes: [{
+            gridLines: {
+              lineWidth: 0,
+              color: 'rgba(255,255,255,0)'
+            },
+            ticks: {
+              beginAtZero: true,
+              stepValue: 16,
+              max: 128,
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              lineWidth: 0,
+              color: 'rgba(255,255,255,0)'
+            }
+          }]
+        }
       }
-    }
+    };
+
+    return new Chart(ctx2, chartConfig);
   };
   var waterResultsData = JSON.stringify(waterResults); //pushes data into local storage before refresh
   waterResults.push(waterResultsData);
   localStorage.setItem('waterResults', waterResultsData);
-  return new Chart(ctx2, chartConfig);
 }
 new Macros( 0, 0, 0, 0);
 var formSubmit = document.getElementById('form-data');
