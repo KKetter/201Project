@@ -14,7 +14,6 @@ var currentWaterInput = [];
 var currentInput = [];
 var macrosArray = [];
 var totalInputs = 0;
-var currentTrackerData = 0;
 console.log('total input macros', totalInputs);
 console.log('macros Array', macrosArray);
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -25,7 +24,7 @@ function Macros(newCarbs, newProt, newFats, newWater) {
   this.newProt = newProt;
   this.newFats = newFats;
   this.newWater = newWater;
-  this.currentTrackerData = currentTrackerData;
+  trackerData = totalInputs;
   userInput0.push(parseInt(this.newCarbs));
   userInput1.push(parseInt(this.newProt));
   userInput2.push(parseInt(this.newFats));
@@ -40,23 +39,19 @@ function Macros(newCarbs, newProt, newFats, newWater) {
 }
 // function renderTracker () {
 // }
-function storeTrackerData() {
-  // var trackerData = localStorage.getItem('trackResults');
-  // if (!trackerData) {
-  //   localStorage.getItem('trackResults', 0);
-  // }
+function storeTrackerData () {
   console.log('tracker data prior', trackerData);
   for (var j = 0; j < category2.length; j++) {
     trackerData = parseInt(totalInputs);
   }
   var trackerPostResults = 0;
-  var trackerResultsData = JSON.stringify(totalInputs);
+  var trackerResultsData = JSON.stringify(trackerData);
   localStorage.setItem('trackResults', trackerResultsData);
+  
   // if (localStorage.getItem('trackResults')){
   var pullStoredResults = localStorage.getItem('trackResults');
   trackerPostResults = JSON.parse(pullStoredResults);
   trackerData = trackerPostResults;
-  // currentTrackerData.push(trackerData);
   console.log('tracker data post', trackerData);
   var divHook = document.getElementById('tracker');
   var spanEl = document.createElement('span');
@@ -97,7 +92,7 @@ function renderChart() {
       }]
     },
     options: {
-      legend: { display: false },
+      legend: {display: false},
       scales: {
         xAxes: [{
           plotOptions: {
@@ -185,7 +180,7 @@ function renderWaterChart() {
       }]
     },
     options: {
-      legend: { display: false },
+      legend: {display: false},
       scales: {
         yAxes: [{
           gridLines: {
@@ -212,7 +207,7 @@ function renderWaterChart() {
   localStorage.setItem('waterResults', waterResultsData);
   return new Chart(ctx2, chartConfig);
 }
-new Macros(0, 0, 0, 0);
+new Macros( 0, 0, 0, 0);
 var formSubmit = document.getElementById('form-data');
 formSubmit.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -226,12 +221,12 @@ formSubmit.addEventListener('submit', function (event) {
   event.target.newFats.value = '';
   event.target.newWater.value = '';
   totalInputs += 1;
+  storeTrackerData ();
   console.log('totalinputs after listener', totalInputs);
-  storeTrackerData();
 });
-var clearOut = function () {
+var clearOut = function() {
   var reset = document.getElementById('reset-data');
-  reset.addEventListener('click', function () {
+  reset.addEventListener ('click', function() {
     if (window.confirm('Do you really want to clear your macros?')) {
       localStorage.clear();
       location.reload();
