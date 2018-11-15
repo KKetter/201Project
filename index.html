@@ -20,12 +20,11 @@
           <label id="prot" class="form">Proteins: </label><input id="prottext" name="newProt" type="number" placeholder="Proteins Per Meal" required><br>
           <label id="fats" class="form">Fats: </label><input id="fatstext" name="newFats" type="number" placeholder="Fats Per Meal" required> <br> 
           <label id="water" class="form">Water: </label><input id="watertext" name="newWater" type="number" placeholder="Water Per Meal" required>
-        </div>
        <div id="buttonbox">
         <div id="trackit">
-          <button type="submit" class="button">Submit</button>
+          <button type="submit" class="button" id="submit">Submit</button>
         </div> 
-        </div>div>
+        </div>
       </form>
       <form id="reset-data" class="form">
             <div id="reset">
@@ -35,6 +34,7 @@
         </div>  
       </form>
     </div>
+  <div id="tracker"></div>
     <div id="alltables">
       <div id="chart-div">
         <canvas id="myChart" width="650" height="300"></canvas>
