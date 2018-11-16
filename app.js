@@ -24,7 +24,7 @@ function Macros(newCarbs, newProt, newFats, newWater) {
   renderWaterChart();
   renderTracker();
 }
-function renderTracker () { //renders counter
+function renderTracker() { //renders counter
   var trackerPostResults = 0;
   var pullStoredResults = localStorage.getItem('trackResults');
   trackerPostResults = JSON.parse(pullStoredResults);
@@ -33,14 +33,14 @@ function renderTracker () { //renders counter
   spanEl.textContent = 'Total Submissions: ' + trackerPostResults;
   divHook.appendChild(spanEl);
 }
-function storeTrackerData () { //stores counter in local storage
+function storeTrackerData() { //stores counter in local storage
   var trackerPostResults = 0; //holds parsed data from local storage
-  if (localStorage.getItem('trackResults')){ //checks to see if data exists in local storage and retreives if TRUE
+  if (localStorage.getItem('trackResults')) { //checks to see if data exists in local storage and retreives if TRUE
     var pullStoredResults = localStorage.getItem('trackResults');
     trackerPostResults = JSON.parse(pullStoredResults);
     trackerData = trackerPostResults + 1;
     console.log('tracker data post', trackerData);
-  } else{
+  } else {
     trackerData = totalInputs; //combines existing data with parsed data from local storage
   }
   console.log('tracker data prior', trackerData);
@@ -151,14 +151,12 @@ function renderWaterChart() { //renders water chart
   for (var j = 0; j < category2.length; j++) {
     waterResults.push(parseInt(currentWaterInput[j])); //adds current data with water chart data
   }
-  if (waterResults > 127) {
-    alert('Slow down! Maximum water recommended reached'); //alerts user if water exceeds 127 ounces
-  }
   var waterPostResults = [];
   if (localStorage.getItem('waterResults')) { //parses data from local storage if TRUE
     var waterStoredData = localStorage.getItem('waterResults');
     waterPostResults = JSON.parse(waterStoredData);
     var intWaterPostResults = Array(1);
+    console.log('inwater', intWaterPostResults);
     for (var h = 0; h < category2.length; h++) { //combines current water data with existing data from local storage
       intWaterPostResults[h] = parseInt(waterPostResults[h]);
       waterResults[h] += parseInt(intWaterPostResults[h]);
@@ -181,7 +179,7 @@ function renderWaterChart() { //renders water chart
         }]
       },
       options: {
-        legend: {display: false},
+        legend: { display: false },
         scales: {
           yAxes: [{
             gridLines: {
@@ -203,14 +201,17 @@ function renderWaterChart() { //renders water chart
         }
       }
     };
-
+    if (waterPostResults > 127) {
+      alert('Slow down! Maximum water recommended reached!'); //alerts user if water exceeds 127 ounces
+      console.log('alert results', waterResults);
+    }
     return new Chart(ctx2, chartConfig);
   };
   var waterResultsData = JSON.stringify(waterResults); //pushes data into local storage before refresh
   waterResults.push(waterResultsData);
   localStorage.setItem('waterResults', waterResultsData);
 }
-new Macros( 0, 0, 0, 0);
+new Macros(0, 0, 0, 0);
 var formSubmit = document.getElementById('form-data');
 formSubmit.addEventListener('submit', function (event) { //event listener
   var newCarbs = event.target.newCarbs.value;
@@ -225,9 +226,9 @@ formSubmit.addEventListener('submit', function (event) { //event listener
   totalInputs += 1; //adds to counter after each submit
   storeTrackerData();
 });
-var clearOut = function() { //reset button for local storage
+var clearOut = function () { //reset button for local storage
   var reset = document.getElementById('reset-data');
-  reset.addEventListener ('click', function() {
+  reset.addEventListener('click', function () {
     if (window.confirm('Do you really want to clear your macros?')) {
       localStorage.clear();
       location.reload();
