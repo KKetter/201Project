@@ -3,21 +3,13 @@ var trackerData = localStorage.getItem('trackResults');
 if (!trackerData) {
   localStorage.getItem('trackResults', 0);
 }
-console.log('top tracker data', trackerData);
-var category1 = ['Carbs', 'Proteins', 'Fats'];
-var category2 = ['Water'];
-var userInput0 = [];
-var userInput1 = [];
-var userInput2 = [];
-var waterInput = [];
-var currentWaterInput = [];
-var currentInput = [];
-var macrosArray = [];
-var totalInputs = 0;
-console.log('total input macros', totalInputs);
-console.log('macros Array', macrosArray);
-var ctx = document.getElementById('myChart').getContext('2d');
-var ctx2 = document.getElementById('myChart2').getContext('2d'); //hook for chart
+var category1 = ['Carbs', 'Proteins', 'Fats'];//labels for macros charts
+var category2 = ['Water']; //label for water chart
+var currentWaterInput = []; //water varibale utlized to push data into chart
+var currentInput = []; //holds current Macros values to push into chart
+var totalInputs = 0; //counter for each submit
+var ctx = document.getElementById('myChart').getContext('2d');//hooks for charts
+var ctx2 = document.getElementById('myChart2').getContext('2d');
 var ctx3 = document.getElementById('myPieChart').getContext('2d');
 function Macros(newCarbs, newProt, newFats, newWater) {
   this.newCarbs = newCarbs;
@@ -25,19 +17,14 @@ function Macros(newCarbs, newProt, newFats, newWater) {
   this.newFats = newFats;
   this.newWater = newWater;
   trackerData = totalInputs;
-  userInput0.push(parseInt(this.newCarbs));
-  userInput1.push(parseInt(this.newProt));
-  userInput2.push(parseInt(this.newFats));
-  waterInput.push(parseInt(this.newWater));
   currentWaterInput = [parseInt(newWater)];
   currentInput = [parseInt(newCarbs), parseInt(newProt), parseInt(newFats),];
-  macrosArray.push(this);
   renderPieChart();
   renderChart();
   renderWaterChart();
   renderTracker();
 }
-function renderTracker () {
+function renderTracker () { //renders counter
   var trackerPostResults = 0;
   var pullStoredResults = localStorage.getItem('trackResults');
   trackerPostResults = JSON.parse(pullStoredResults);
@@ -46,44 +33,43 @@ function renderTracker () {
   spanEl.textContent = 'Total Submissions: ' + trackerPostResults;
   divHook.appendChild(spanEl);
 }
-function storeTrackerData () {
-  var trackerPostResults = 0;
-  if (localStorage.getItem('trackResults')){
+function storeTrackerData () { //stores counter in local storage
+  var trackerPostResults = 0; //holds parsed data from local storage
+  if (localStorage.getItem('trackResults')){ //checks to see if data exists in local storage and retreives if TRUE
     var pullStoredResults = localStorage.getItem('trackResults');
     trackerPostResults = JSON.parse(pullStoredResults);
     trackerData = trackerPostResults + 1;
     console.log('tracker data post', trackerData);
   } else{
-    trackerData = totalInputs;
+    trackerData = totalInputs; //combines existing data with parsed data from local storage
   }
   console.log('tracker data prior', trackerData);
   var trackerResultsData = JSON.stringify(trackerData);
   localStorage.setItem('trackResults', trackerResultsData);
 }
-var imgSteak = new Image();
+var imgSteak = new Image(); //following variables hold images to render in chart
 imgSteak.src = 'img/steak1.jfif';
 var imgDonut = new Image();
 imgDonut.src = 'img/donut1.png';
 var imgCheese = new Image();
 imgCheese.src = 'img/macncheese.png';
-function renderChart() {
-  var userInputResults = [];
+function renderChart() { //renders first macro bar chart
+  var userInputResults = []; //holds values to render current data on chart
   console.log('bar chart userinputresults', userInputResults);
   for (var j = 0; j < category1.length; j++) {
     userInputResults.push(currentInput[j]);
   }
-  var resultsPrior = [];
-  var postResults = [];
-  if (localStorage.getItem('userInput')) {
+  var postResults = []; //holds parsed data from local storage
+  if (localStorage.getItem('userInput')) { //checks to see if data exists in local storage and retreives if TRUE
     var storedData = localStorage.getItem('userInput');
     postResults = JSON.parse(storedData);
     var intPostResults = Array(3);
-    for (var h = 0; h < category1.length; h++) {
+    for (var h = 0; h < category1.length; h++) { //combines data from local storage array with current data
       intPostResults[h] = parseInt(postResults[h]);
       userInputResults[h] += parseInt(intPostResults[h]);
     }
   }
-  imgSteak.onload = function () {
+  imgSteak.onload = function () { //loads images on page load to rend for bar chart
     var fillPatternS = ctx2.createPattern(imgSteak, 'repeat');
     var fillPatternD = ctx2.createPattern(imgDonut, 'repeat');
     var fillPatternC = ctx2.createPattern(imgCheese, 'repeat');
@@ -120,17 +106,16 @@ function renderChart() {
     };
     return new Chart(ctx, chartConfig);
   };
-  var resultsData = JSON.stringify(userInputResults); //pushes data into local storage prior to refresh
-  resultsPrior.push(resultsData);
+  var resultsData = JSON.stringify(userInputResults); //pushes data into local storage
   localStorage.setItem('userInput', resultsData);
 }
-function renderPieChart() {
-  var userInputResults = [];
+function renderPieChart() { //renders pie chart
+  var userInputResults = []; //holds variable to render on chart
   console.log('pie chart userinputresults', userInputResults);
-  for (var j = 0; j < category1.length; j++) {
+  for (var j = 0; j < category1.length; j++) { //combines current data with variable to hold chart data
     userInputResults.push(currentInput[j]);
   }
-  var postResults = [];
+  var postResults = []; //holds parsed data from local storage
   if (localStorage.getItem('userInput')) {
     var storedData = localStorage.getItem('userInput');
     postResults = JSON.parse(storedData);
@@ -158,23 +143,23 @@ function renderPieChart() {
   return new Chart(ctx3, myPieChart);
 }
 
-var imgWater = new Image();
-imgWater.src = 'img/chartdrop1.png';
-function renderWaterChart() {
-  var waterResults = [];
+var imgWater = new Image(); //image utilized to render on water chart
+imgWater.src = 'img/waterflow2.jpeg';
+function renderWaterChart() { //renders water chart
+  var waterResults = []; //data for water chart
   console.log('water results', waterResults);
   for (var j = 0; j < category2.length; j++) {
-    waterResults.push(parseInt(currentWaterInput[j]));
+    waterResults.push(parseInt(currentWaterInput[j])); //adds current data with water chart data
   }
   if (waterResults > 127) {
-    alert('Slow down! Maximum water recommended reached');
+    alert('Slow down! Maximum water recommended reached'); //alerts user if water exceeds 127 ounces
   }
   var waterPostResults = [];
-  if (localStorage.getItem('waterResults')) {
+  if (localStorage.getItem('waterResults')) { //parses data from local storage if TRUE
     var waterStoredData = localStorage.getItem('waterResults');
     waterPostResults = JSON.parse(waterStoredData);
     var intWaterPostResults = Array(1);
-    for (var h = 0; h < category2.length; h++) {
+    for (var h = 0; h < category2.length; h++) { //combines current water data with existing data from local storage
       intWaterPostResults[h] = parseInt(waterPostResults[h]);
       waterResults[h] += parseInt(intWaterPostResults[h]);
     }
@@ -227,8 +212,7 @@ function renderWaterChart() {
 }
 new Macros( 0, 0, 0, 0);
 var formSubmit = document.getElementById('form-data');
-formSubmit.addEventListener('submit', function (event) {
-  // event.preventDefault();
+formSubmit.addEventListener('submit', function (event) { //event listener
   var newCarbs = event.target.newCarbs.value;
   var newProt = event.target.newProt.value;
   var newFats = event.target.newFats.value;
@@ -238,11 +222,10 @@ formSubmit.addEventListener('submit', function (event) {
   event.target.newProt.value = '';
   event.target.newFats.value = '';
   event.target.newWater.value = '';
-  totalInputs += 1;
+  totalInputs += 1; //adds to counter after each submit
   storeTrackerData();
-  console.log('totalinputs after listener', totalInputs);
 });
-var clearOut = function() {
+var clearOut = function() { //reset button for local storage
   var reset = document.getElementById('reset-data');
   reset.addEventListener ('click', function() {
     if (window.confirm('Do you really want to clear your macros?')) {
