@@ -187,6 +187,36 @@ footer {
     width: 100%;
 }
 
-#aboutus {
+/* #aboutus {
     padding-left: 45vw;
+} */
+#teamphotos {
+    padding-left: 22vw;
+    padding-top: 10vw;
+}
+.indphotos {
+    border-radius: 2em;
+    margin-right: 3vw;
+}
+#teamnames {
+    font-family:'BenchNine', sans-serif;
+    padding-top: 1vw;
+    padding-left: 14.25vw;
+    font-size: 6vh;
+}
+.indnames {
+    margin-left: 11vw;
+    text-decoration: none;
+}
+.indnames:hover {
+    color:#07b9fc; 
+}
+.indnames:visited {
+    color: #bf1093;
+}
+.indnames:link {
+    color: #009543;
+}
+.indnames:active {
+    color: #07b9fc; 
 }
