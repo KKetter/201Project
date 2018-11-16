@@ -7,7 +7,6 @@ header {
     background-size: cover;
     background-position: center;
     border: solid 1px black; 
-    /* border: 2px solid red; */
 }
 
 h1 {
@@ -17,7 +16,6 @@ h1 {
     text-shadow: 7px 7px 7px black;
     text-align: center;
     font-size: 7vw;
-    /* border: solid 1px purple; */
     height: 100%;
     font-family: 'Ultra', sans-serif;
     padding-top: 2vh;
@@ -83,7 +81,6 @@ body {
 }
 
 #buttonbox {
-    /* border: 1px solid greenyellow; */
     display: inline-block;
 }
 
@@ -145,15 +142,6 @@ button {
     display: inline-block;
 }
 
-/* #water-art {
-    background-image: url("./img/drop300.2.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    top: -51vh;
-} */
 
 #myChart2 {
     background-repeat: no-repeat;
@@ -186,10 +174,6 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
-/* #aboutus {
-    padding-left: 45vw;
-} */
 #teamphotos {
     padding-left: 22vw;
     padding-top: 4vw;
