@@ -192,7 +192,7 @@ footer {
 } */
 #teamphotos {
     padding-left: 22vw;
-    padding-top: 10vw;
+    padding-top: 4vw;
 }
 .indphotos {
     border-radius: 2em;
@@ -219,4 +219,11 @@ footer {
 }
 .indnames:active {
     color: #07b9fc; 
+}
+
+#meetus {
+    font-family:'BenchNine', sans-serif;
+    font-size: 6vh;
+    padding-top: 6vw;
+    padding-left: 41vw;
 }
